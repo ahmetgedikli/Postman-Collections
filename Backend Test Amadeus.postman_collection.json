@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "725d8b9b-29d3-44a9-b8b0-ee2588ee3cb9",
+		"name": "Backend Test Amadeus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33114960"
+	},
+	"item": [
+		{
+			"name": "https://flights-api.buraky.workers.dev/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const schema= {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\r",
+							"  \"title\": \"Generated schema for Root\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"data\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": {\r",
+							"        \"type\": \"object\",\r",
+							"        \"properties\": {\r",
+							"          \"id\": {\r",
+							"            \"type\": \"number\"\r",
+							"          },\r",
+							"          \"from\": {\r",
+							"            \"type\": \"string\"\r",
+							"          },\r",
+							"          \"to\": {\r",
+							"            \"type\": \"string\"\r",
+							"          },\r",
+							"          \"date\": {\r",
+							"            \"type\": \"string\"\r",
+							"          }\r",
+							"        },\r",
+							"        \"required\": [\r",
+							"          \"id\",\r",
+							"          \"from\",\r",
+							"          \"to\",\r",
+							"          \"date\"\r",
+							"        ]\r",
+							"      }\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"data\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Response contains valid JSON data\", () =>{\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Content-Type is present and value is \\\"application/json\\\"\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.response.to.be.header(\"Content-Type\",\"application/json\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://flights-api.buraky.workers.dev/",
+					"protocol": "https",
+					"host": [
+						"flights-api",
+						"buraky",
+						"workers",
+						"dev"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
